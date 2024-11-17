@@ -28,6 +28,7 @@
 
 #include "SudokuBoard.h"
 
+
 bool check(CSudokuBoard* tmpSudoku1) {	
 	int fieldSize = tmpSudoku1->getFieldSize();
 	int blockSize = tmpSudoku1->getBlockSize();
@@ -103,36 +104,45 @@ bool valid(CSudokuBoard* tmpSudoku1, int row, int col, int num) {
 	return true;
 }
 
-void solver(CSudokuBoard* tmpSudoku1, int row, int col, int lastRow, int lastCol, int found) {
-	#pragma omp parallel 
-	{
-		for(int i = row; i < tmpSudoku1->getFieldSize(); i++) {
-			for(int j = col; j < tmpSudoku1->getFieldSize(); j++) {
-				if(tmpSudoku1->get(i, j) == 0) {
-					for(int num = 0; num < tmpSudoku1->getFieldSize(); num++) {
-						#pragma omp task firstprivate(i, j, tmpSudoku1, num) shared(lastRow, lastCol, found)
-						{
-							CSudokuBoard copySudoku(*tmpSudoku1);
-							if(valid(&copySudoku, i, j, num)) {
-								copySudoku.set(i, j, num);
-								solver(&copySudoku, i, j, lastRow, lastCol, found);
-								#pragma omp critical
-								{
-									if(i == lastRow && j == lastCol && found == 0) {
-										found = 1;
-										std::cout << "found "<< omp_get_thread_num() << std::endl;
-										copySudoku.printBoard();
-									}
-								}
+void solver(CSudokuBoard* tmpSudoku1, int row, int col, int lastRow, int lastCol) {
+	// #pragma omp parallel
+	// {
+	// 	#pragma omp single
+	// 	{
+			for(int i = 0; i < tmpSudoku1->getFieldSize(); i++) {
+				for(int j = 0; j < tmpSudoku1->getFieldSize(); j++) {
+					if(tmpSudoku1->get(i, j) == 0) {
+						for(int num = 1; num < (tmpSudoku1->getFieldSize()+1); num++) {
+							//std::cout << valid(&copySudoku, i, j, num) << i << " "<< j << " set " << num << std::endl;
+							//std::cout << num << i << j <<std::endl;
+							//std::cout << "found "<< omp_get_thread_num() << num << i << j <<std::endl;
+							if(valid(tmpSudoku1, i, j, num)) {
+								// #pragma omp task firstprivate(i, j, tmpSudoku1, num)
+								// {
+									CSudokuBoard copySudoku = CSudokuBoard(*tmpSudoku1);
+									copySudoku.set(i, j, num);
+									//copySudoku.printBoard();
+									//std::cout << "found "<< omp_get_thread_num() << num << i << j <<std::endl;
+									// #pragma critical
+									// {
+										if(i == lastRow && j == lastCol) {
+											//found = true;
+											std::cout << "found "<< omp_get_thread_num() << num << i << j <<std::endl;
+											copySudoku.printBoard();
+										}
+										else {
+											solver(&copySudoku, 0, 0, lastRow, lastCol);
+										}
+									//}
+								//}
 							}
 						}
-
 					}
 				}
 			}
-		}
-		#pragma omp taskwait
-	}
+	// 	}
+	// 	#pragma omp taskwait
+	// }
 }
 
 
@@ -141,6 +151,18 @@ void printSol(int* sol, int length) {
 		std::cout << sol[i] << " ";
 	}
 	std::cout << std::endl;
+}
+
+void printMatrx(int* matrix, int fieldSize, int zeros)
+{
+	for(int i = 0; i < zeros; i++) {
+		for(int j = 0; j < fieldSize; j++) {
+			std::cout << std::setw(1) << 
+				matrix[i*fieldSize+j] 
+				<< " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 
@@ -171,19 +193,115 @@ int main(int argc, char* argv[]) {
 
 		//initializng some var
 		// solve the Sudoku by finding (and printing) all solutions
-		int rowZero;
-		int colZero;
-		for(int i = 0; i < sudoku1->getFieldSize(); i++) {
-			for(int j = 0; j < sudoku1->getFieldSize(); j++) {
-				if(sudoku1->get(i, j) == 0) {
-					rowZero = i;
-					colZero = j;
-				}
-			}
-		}
+		// int rowZero;
+		// int colZero;
+		// for(int i = 0; i < sudoku1->getFieldSize(); i++) {
+		// 	for(int j = 0; j < sudoku1->getFieldSize(); j++) {
+		// 		if(sudoku1->get(i, j) == 0) {
+		// 			rowZero = i;
+		// 			colZero = j;
+		// 		}
+		// 	}
+		// }
 		t3 = omp_get_wtime();
 		//std::cout << rowZero << " " << colZero;
-		solver(sudoku1, 0, 0, rowZero, colZero, 0);
+		//solver(sudoku1, 0, 0, rowZero, colZero);
+		// int fieldSize = sudoku1->getFieldSize();
+		// int blockSize = sudoku1->getBlockSize();
+		// int zeros = 0;
+		// for(int i = 0; i < fieldSize; i++) {
+		// 	for(int j = 0; j < fieldSize; j++) {
+		// 		if(sudoku1->get(i, j) == 0) {
+		// 			zeros = zeros + 1;
+		// 		}
+		// 	}
+		// }
+		// int* combinations = new int[zeros*(fieldSize)];
+
+		// #pragma omp parallel
+		// {
+		// 	#pragma omp single
+		// 	{
+		// 		int index = 0;
+		// 		for(int i = 0; i < fieldSize; i++) {
+		// 			for(int j = 0; j < fieldSize; j++) {
+		// 				if(sudoku1->get(i, j) == 0) {
+		// 					#pragma omp task firstprivate(fieldSize, index, i, j, combinations, sudoku1)
+		// 					{
+		// 						int x = 0;
+		// 						for(int num = 1; num < fieldSize+1; num++) {
+		// 							if(valid(sudoku1, i, j, num)) {
+		// 								combinations[fieldSize*index+x] = num;
+		// 								x++;
+		// 							}
+		// 						}
+		// 						while(x != fieldSize) {
+		// 							combinations[fieldSize*index+x] = 0;
+		// 							x++;
+		// 						}
+		// 					}
+		// 					index = index + 1;
+		// 				}
+		// 			}
+		// 		}
+		// 		#pragma omp taskwait
+		// 		printMatrx(combinations, fieldSize, zeros);
+		// 	}
+		// }
+		// #pragma omp parallel
+		// {
+		// 	#pragma omp single 
+		// 	{
+		// 		int* comb = new int[zeros+1];
+		// 		for(int i = 1;  i < zeros; i++) {
+		// 			comb[i] = 0;
+		// 		}
+		// 		comb[0] = -1;
+		// 		comb[zeros] = 0;
+		// 		bool run = true;
+		// 		while(run) {
+		// 			int* tmpSolution = new int[zeros];
+		// 			comb[0] = comb[0]+1;
+		// 			for(int i = 0; i < zeros; i++) {
+		// 				if(combinations[comb[i]] == 0 || comb[i] == fieldSize) {
+		// 					comb[i] = 0;
+		// 					comb[i+1] = comb[i+1]+1;
+		// 				}
+		// 				tmpSolution[i] = comb[i];
+		// 			}
+		// 			if(comb[zeros] == 1) {
+		// 				run = false;
+		// 			}
+		// 			#pragma omp task
+		// 			{
+		// 				printSol(tmpSolution, zeros);
+		// 				int index = 0;
+		// 				bool validb = true;
+		// 				CSudokuBoard *tmpSudoku1 = new CSudokuBoard(*sudoku1);
+		// 				for(int i = 0; i < fieldSize && validb; i++) {
+		// 					for(int j = 0; j < fieldSize && validb; j++) {
+		// 						if(tmpSudoku1->get(i, j) == 0) {
+		// 							if(valid(tmpSudoku1, i, j, tmpSolution[index])) {
+		// 								tmpSudoku1->set(i, j, tmpSolution[index]);
+		// 								index++;
+		// 							}
+		// 							else {
+		// 								validb = false;
+		// 							}
+		// 						}
+		// 					}
+		// 				}
+		// 				if(validb) {
+		// 					tmpSudoku1->printBoard();
+		// 				}
+		// 				delete tmpSudoku1;
+		// 				delete tmpSolution;
+		// 			}
+		// 		}
+		// 		#pragma omp taskwait
+		// 	}
+
+		// }
 
 
 
@@ -205,7 +323,7 @@ int main(int argc, char* argv[]) {
 			solution[i] = 1;
 		}
 		bool run = true;
-		#pragma omp parallel
+		#pragma omp parallel sections
 		{
 			while(run) {
 				//generate the new solution and copy to tmpSolution for thread
