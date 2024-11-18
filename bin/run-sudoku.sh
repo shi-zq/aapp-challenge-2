@@ -10,7 +10,6 @@ for threads in $THREADS; do
   OMP_NUM_THREADS=$threads ./sudoku 9 3 3sol # 1 solution
   OMP_NUM_THREADS=$threads ./sudoku 9 3 4sol # 1 solution
 
-  #OMP_NUM_THREADS=$threads ./sudoku 9 3 test.txt # 1 solution
   #OMP_NUM_THREADS=$threads ./sudoku 9 3 sudoku-9x9.txt # 1 solution
   #OMP_NUM_THREADS=$threads ./sudoku 16 4 sudoku-16x16.txt # 80 solutions
   #OMP_NUM_THREADS=$threads ./sudoku 25 5 sudoku-25x25.txt # 1 solution
