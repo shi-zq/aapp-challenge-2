@@ -33,6 +33,7 @@ int fieldSize;
 int blockSize;
 int found_sudokus = 0;
 
+// check if all empty cell are filled with number
 bool validSolution(CSudokuBoard* tmpSudoku1) {
 	for(int i = 0; i < fieldSize; i++) {
 		for(int j = 0; j < fieldSize; j++) {
@@ -43,6 +44,7 @@ bool validSolution(CSudokuBoard* tmpSudoku1) {
 	}
 	return true;
 }
+//chck if this num is valid in the position (row, col) in current sudoku
 bool valid(CSudokuBoard* tmpSudoku1, int row, int col, int num) {
 	for(int i = 0; i < fieldSize; i++) {
 		if(tmpSudoku1->get(row, i) == num) {
@@ -83,10 +85,10 @@ void solver(CSudokuBoard* tmpSudoku1, int row, int col) {
 									copySudoku.set(i, j, num);
 									{
 										if(validSolution(&copySudoku)) {
-											copySudoku.printBoard();
-											// #pragma omp critical 
+											//copySudoku.printBoard(); //if you want to print the valid solution
+											// #pragma omp critical
 											// {
-											// 	found_sudokus++;
+											// 	found_sudokus++; // if you want to print only the number of solution
 											// }
 										}
 										else {
@@ -96,7 +98,7 @@ void solver(CSudokuBoard* tmpSudoku1, int row, int col) {
 								}
 							}
 						}
-						b = false;
+						b = false; //after generate all possible number, dont continue to found next empty cell and leave the work to recursion
 					}
 				}
 			}

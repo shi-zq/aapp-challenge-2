@@ -1,0 +1,225 @@
+Given Sudoku template
+Parallel computation took 0.0036461 seconds (1 threads).
+
+Given Sudoku template
+Parallel computation took 38.5776 seconds (1 threads).
+
+Given Sudoku template
+Parallel computation took 1093.6 seconds (1 threads).
+
+Given Sudoku template
+Parallel computation took 0.00416184 seconds (2 threads).
+
+Given Sudoku template
+Parallel computation took 28.4008 seconds (2 threads).
+
+Given Sudoku template
+Parallel computation took 1049.84 seconds (2 threads).
+
+Given Sudoku template
+Parallel computation took 0.00331277 seconds (4 threads).
+
+Given Sudoku template
+Parallel computation took 28.6604 seconds (4 threads).
+
+Given Sudoku template
+Parallel computation took 1049.41 seconds (4 threads).
+
+Given Sudoku template
+Parallel computation took 0.00471926 seconds (6 threads).
+
+Given Sudoku template
+Parallel computation took 28.5828 seconds (6 threads).
+
+Given Sudoku template
+Parallel computation took 1044.69 seconds (6 threads).
+
+Given Sudoku template
+Parallel computation took 0.00403364 seconds (8 threads).
+
+Given Sudoku template
+Parallel computation took 28.4757 seconds (8 threads).
+
+Given Sudoku template
+Parallel computation took 1046.73 seconds (8 threads).
+
+Given Sudoku template
+Parallel computation took 0.00772343 seconds (10 threads).
+
+Given Sudoku template
+Parallel computation took 28.2379 seconds (10 threads).
+
+Given Sudoku template
+Parallel computation took 1044.15 seconds (10 threads).
+
+Given Sudoku template
+Parallel computation took 0.00730306 seconds (12 threads).
+
+Given Sudoku template
+Parallel computation took 27.9223 seconds (12 threads).
+
+Given Sudoku template
+Parallel computation took 1043.08 seconds (12 threads).
+
+Given Sudoku template
+Parallel computation took 0.00568068 seconds (14 threads).
+
+Given Sudoku template
+Parallel computation took 27.9896 seconds (14 threads).
+
+Given Sudoku template
+Parallel computation took 1036.54 seconds (14 threads).
+
+Given Sudoku template
+Parallel computation took 0.00701258 seconds (16 threads).
+
+Given Sudoku template
+Parallel computation took 28.0193 seconds (16 threads).
+
+Given Sudoku template
+Parallel computation took 1042.64 seconds (16 threads).
+
+Given Sudoku template
+Parallel computation took 0.017442 seconds (18 threads).
+
+Given Sudoku template
+Parallel computation took 27.9898 seconds (18 threads).
+
+Given Sudoku template
+Parallel computation took 1044.14 seconds (18 threads).
+
+Given Sudoku template
+Parallel computation took 0.00551143 seconds (20 threads).
+
+Given Sudoku template
+Parallel computation took 28.0402 seconds (20 threads).
+
+Given Sudoku template
+Parallel computation took 1043.58 seconds (20 threads).
+
+Given Sudoku template
+Parallel computation took 0.0134229 seconds (22 threads).
+
+Given Sudoku template
+Parallel computation took 27.8547 seconds (22 threads).
+
+Given Sudoku template
+Parallel computation took 1039.23 seconds (22 threads).
+
+Given Sudoku template
+Parallel computation took 0.0176269 seconds (24 threads).
+
+Given Sudoku template
+Parallel computation took 28.2229 seconds (24 threads).
+
+Given Sudoku template
+Parallel computation took 1040.06 seconds (24 threads).
+
+Given Sudoku template
+Parallel computation took 0.00916348 seconds (26 threads).
+
+Given Sudoku template
+Parallel computation took 27.9597 seconds (26 threads).
+
+Given Sudoku template
+Parallel computation took 1042.04 seconds (26 threads).
+
+Given Sudoku template
+Parallel computation took 0.00915602 seconds (28 threads).
+
+Given Sudoku template
+Parallel computation took 28.7341 seconds (28 threads).
+
+Given Sudoku template
+Parallel computation took 1040.63 seconds (28 threads).
+
+Given Sudoku template
+Parallel computation took 0.00797616 seconds (30 threads).
+
+Given Sudoku template
+Parallel computation took 28.1721 seconds (30 threads).
+
+Given Sudoku template
+Parallel computation took 1044.23 seconds (30 threads).
+
+Given Sudoku template
+Parallel computation took 0.00949038 seconds (32 threads).
+
+Given Sudoku template
+Parallel computation took 28.0326 seconds (32 threads).
+
+Given Sudoku template
+Parallel computation took 1038.03 seconds (32 threads).
+
+Given Sudoku template
+Parallel computation took 0.0104894 seconds (34 threads).
+
+Given Sudoku template
+Parallel computation took 28.1012 seconds (34 threads).
+
+Given Sudoku template
+Parallel computation took 1039.56 seconds (34 threads).
+
+Given Sudoku template
+Parallel computation took 0.0093165 seconds (36 threads).
+
+Given Sudoku template
+Parallel computation took 27.9603 seconds (36 threads).
+
+Given Sudoku template
+Parallel computation took 1043.05 seconds (36 threads).
+
+Given Sudoku template
+Parallel computation took 0.0111452 seconds (38 threads).
+
+Given Sudoku template
+Parallel computation took 27.9609 seconds (38 threads).
+
+Given Sudoku template
+Parallel computation took 1037.59 seconds (38 threads).
+
+Given Sudoku template
+Parallel computation took 0.00774037 seconds (40 threads).
+
+Given Sudoku template
+Parallel computation took 27.7659 seconds (40 threads).
+
+Given Sudoku template
+Parallel computation took 1040.01 seconds (40 threads).
+
+Given Sudoku template
+Parallel computation took 0.0113039 seconds (42 threads).
+
+Given Sudoku template
+Parallel computation took 27.8549 seconds (42 threads).
+
+Given Sudoku template
+Parallel computation took 1039.63 seconds (42 threads).
+
+Given Sudoku template
+Parallel computation took 0.0074528 seconds (44 threads).
+
+Given Sudoku template
+Parallel computation took 28.0828 seconds (44 threads).
+
+Given Sudoku template
+Parallel computation took 1038.45 seconds (44 threads).
+
+Given Sudoku template
+Parallel computation took 0.0150588 seconds (46 threads).
+
+Given Sudoku template
+Parallel computation took 28.0097 seconds (46 threads).
+
+Given Sudoku template
+Parallel computation took 1038.31 seconds (46 threads).
+
+Given Sudoku template
+Parallel computation took 0.0202901 seconds (48 threads).
+
+Given Sudoku template
+Parallel computation took 28.4199 seconds (48 threads).
+
+Given Sudoku template
+Parallel computation took 1046.52 seconds (48 threads).
+
