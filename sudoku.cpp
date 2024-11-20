@@ -139,6 +139,7 @@ int main(int argc, char* argv[]) {
 
 		solver(sudoku1, 0, 0);
 		//std::cout << found_sudokus << std::endl;
+		// ./run-sudoku.sh >> data.txt all performance measurements are stored in data.txt
 		t4 = omp_get_wtime();
 		
 		delete sudoku1;
